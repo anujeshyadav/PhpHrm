@@ -75,13 +75,12 @@ const Loginform = (args) => {
     // setRegistration(true);
   };
   const loadModel = async () => {
-   
     faceLandmarksDetection
       .load(faceLandmarksDetection.SupportedPackages.mediapipeFacemesh, {
         maxFaces: 1,
       })
       .then((model) => {
-        
+        debugger;
         setModel(model);
         setText("ready for capture");
       })
@@ -91,7 +90,6 @@ const Loginform = (args) => {
   };
 
   const handleClick = () => {
-   
     const newIsOpen = !isOpen;
     const newCount = isOpen ? count : 0;
     setIsOpen(newIsOpen);
@@ -772,13 +770,16 @@ const Loginform = (args) => {
                                   screenshotFormat="image/jpeg"
                                   className="mb-2 webcamheading"
                                 />
-                                {/* <button
-                              type="button"
-                              onClick={handleCapture}
-                              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                            >
-                              Take Picture
-                            </button> */}
+                                <div className="d-flex justify-content-center">
+                                  <Button
+                                    color="primary"
+                                    type="button"
+                                    onClick={handleCapture}
+                                    className=""
+                                  >
+                                    Capture
+                                  </Button>
+                                </div>
                               </div>
                             )}
                             {formData?.image && (
@@ -1080,7 +1081,7 @@ const Loginform = (args) => {
             toggle={toggle}
             // toggle={toggleModal}
           >
-            Add Details  -
+            Add Details -
           </ModalHeader>
           <div className="p-1 mx-3">
             <Form onSubmit={HandleSubmitData}>
@@ -1222,7 +1223,8 @@ const Loginform = (args) => {
                                   // src={UploadedImage}
                                   src={imageUrl}
                                   style={{ height: "100%", width: "100%" }}
-                                  aspectRatio={1} // Set aspect ratio as needed
+                                  // aspectRatio={1} // Set aspect ratio as needed
+                                  initialAspectRatio={6 / 14}
                                   guides={true}
                                   cropBoxResizable={true}
                                   dragMode="move"

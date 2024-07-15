@@ -97,8 +97,8 @@ function InnerTable({ insideData }, args) {
               <th>Duration</th>
               <th>lateBy</th>
               <th>ShortBy</th>
-              <th>Working</th>
-              <th>Amount</th>
+              {/* <th>Working</th> */}
+              <th>Amount(Rs/-)</th>
               {/* <th>Action</th> */}
             </tr>
           </thead>
@@ -114,8 +114,8 @@ function InnerTable({ insideData }, args) {
                       <td>{custom?.attendance_duration}</td>
                       <td>{custom?.late_by}</td>
                       <td>{custom?.short_by}</td>
-                      <td>{custom?.working_hour}</td>
-                      <td>{custom?.amount}</td>
+                      {/* <td>{custom?.working_hour}</td> */}
+                      <td>{custom?.total_amount}</td>
                     </tr>
                   </>
                 ))
@@ -199,10 +199,10 @@ function OuterTable({ Search, setSearch, DateSearch, setDateSearch }, args) {
     const interval = setInterval(() => {
       const updatedEmployees = DataSource?.map((employee) => {
         let timeInOffice = null;
-        if (employee.in_time) {
+        if (employee.in_time_new) {
           timeInOffice = calculateTimeInOffice(
-            employee.in_time,
-            employee.out_time
+            employee.in_time_new,
+            employee.out_time_new
           );
         }
         return { ...employee, timeInOffice };
@@ -438,8 +438,8 @@ function OuterTable({ Search, setSearch, DateSearch, setDateSearch }, args) {
                         </span>
                       </td>
                       <td>{ele?.CurrentDate}</td>
-                      <td>{!!ele?.in_time && ele?.in_time}</td>
-                      <td>{!!ele?.out_time && ele?.out_time}</td>
+                      <td>{!!ele?.in_time && ele?.in_time_new}</td>
+                      <td>{!!ele?.out_time && ele?.out_time_new}</td>
                       <td>{ele?.timeInOffice && ele?.timeInOffice}</td>
                       {/* <td>{workingHours}</td> */}
                       {/* <td>{ele?.duration && ele?.duration}</td> */}
